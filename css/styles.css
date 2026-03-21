@@ -1900,6 +1900,15 @@ button:focus-visible,
     transform: scale(1.1);
 }
 
+/* Color disclaimer */
+.color-disclaimer {
+    font-size: 11px;
+    color: #888;
+    font-style: italic;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
 /* WhatsApp button */
 .btn-whatsapp {
     background: #25D366;
