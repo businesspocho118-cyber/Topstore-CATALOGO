@@ -773,12 +773,16 @@ function abrirGuiaTallas() {
     const titulo = document.getElementById('guiaTitulo');
     const mensaje = document.getElementById('guiaMensaje');
     
+    console.log('Abriendo guía de tallas, modal:', modal);
+    
     // Determinar el género actual basado en los botones activos
     const btnMujeres = document.getElementById('btn-mujeres');
     if (btnMujeres && btnMujeres.classList.contains('active')) {
         generoActual = 'mujeres';
+        console.log('Género: mujeres');
     } else {
         generoActual = 'hombres';
+        console.log('Género: hombres');
     }
     
     // Por defecto mostrar un mensaje
@@ -838,12 +842,15 @@ function cerrarGuiaTallasBtn() {
 
 // Función para ver guía de tallas desde el modal de producto
 function verGuiaTallasProducto() {
-    const titulo = document.getElementById('detailName');
+    const titulo = document.getElementById('detailProductName');
     if (titulo) {
         const nombreProducto = titulo.textContent;
+        console.log('Producto seleccionado:', nombreProducto);
         abrirGuiaTallas();
         setTimeout(() => {
             mostrarGuiaTallas(nombreProducto);
         }, 100);
+    } else {
+        console.log('No se encontró el elemento detailProductName');
     }
 }
