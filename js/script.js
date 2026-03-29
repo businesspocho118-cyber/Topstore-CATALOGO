@@ -787,7 +787,7 @@ function abrirGuiaTallas() {
     mensaje.textContent = 'Haz click en un producto para ver su guía de tallas';
     titulo.textContent = 'Guía de Tallas';
     
-    modal.style.display = 'flex';
+    modal.classList.add('mostrar');
     document.body.style.overflow = 'hidden';
 }
 
@@ -825,15 +825,15 @@ function mostrarGuiaTallas(productoNombre) {
 function cerrarGuiaTallas(event) {
     if (event.target.id === 'guiaTallasModal') {
         const modal = document.getElementById('guiaTallasModal');
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
+        modal.classList.remove('mostrar');
+        document.body.style.overflow = 'auto';
     }
 }
 
 function cerrarGuiaTallasBtn() {
     const modal = document.getElementById('guiaTallasModal');
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
+    modal.classList.remove('mostrar');
+    document.body.style.overflow = 'auto';
 }
 
 // Función para ver guía de tallas desde el modal de producto
