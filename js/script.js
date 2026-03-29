@@ -545,6 +545,27 @@ function openProductDetail(productId) {
     
     // Show initial color label
     updateColorLabel(0);
+    
+    // Verificar si tiene guía de tallas
+    var btnGuiaTallas = document.getElementById('btnGuiaTallasProducto');
+    if (btnGuiaTallas) {
+        var btnMujeres = document.getElementById('btn-mujeres');
+        var genero = (btnMujeres && btnMujeres.classList.contains('active')) ? 'mujeres' : 'hombres';
+        
+        var nombreLower = name.toLowerCase();
+        var tieneGuia = false;
+        
+        if (guiasTallas[genero]) {
+            for (var key in guiasTallas[genero]) {
+                if (nombreLower.includes(key)) {
+                    tieneGuia = true;
+                    break;
+                }
+            }
+        }
+        
+        btnGuiaTallas.style.display = tieneGuia ? 'block' : 'none';
+    }
 }
 
 // Close product detail modal
