@@ -1,0 +1,18 @@
+{
+  "mujeres": {
+    "short-push-up": "short-push-up.png",
+    "short-con-push-up": "short-push-up.png",
+    "short": "short-push-up.png",
+    "conjunto-short": "conjunto-short.png",
+    "conjunto con short": "conjunto-short.png",
+    "chaqueta": "chaquetas.png",
+    "chaquetas": "chaquetas.png",
+    "chaqueta delgada": "chaquetas.png",
+    "enterizo-largo": "enterizo-largo.png",
+    "enterizo": "enterizo-largo.png",
+    "enterizo-corto": "enterizo-corto.png",
+    "conjunto-top": "conjunto-top.png",
+    "conjunto con top": "conjunto-top.png"
+  },
+  "hombres": {}
+}

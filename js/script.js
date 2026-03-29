@@ -740,3 +740,110 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 });
+
+// ========================================
+// Guía de Tallas
+// ========================================
+
+// Mapa de guías de tallas
+const guiasTallas = {
+    "mujeres": {
+        "short-push-up": "guiadetallas/mujeres/short-push-up.png",
+        "short-con-push-up": "guiadetallas/mujeres/short-push-up.png",
+        "short": "guiadetallas/mujeres/short-push-up.png",
+        "conjunto-short": "guiadetallas/mujeres/conjunto-short.png",
+        "conjunto con short": "guiadetallas/mujeres/conjunto-short.png",
+        "chaqueta": "guiadetallas/mujeres/chaquetas.png",
+        "chaquetas": "guiadetallas/mujeres/chaquetas.png",
+        "chaqueta delgada": "guiadetallas/mujeres/chaquetas.png",
+        "enterizo-largo": "guiadetallas/mujeres/enterizo-largo.png",
+        "enterizo": "guiadetallas/mujeres/enterizo-largo.png",
+        "enterizo-corto": "guiadetallas/mujeres/enterizo-corto.png",
+        "conjunto-top": "guiadetallas/mujeres/conjunto-top.png",
+        "conjunto con top": "guiadetallas/mujeres/conjunto-top.png"
+    },
+    "hombres": {}
+};
+
+let generoActual = 'hombres';
+
+function abrirGuiaTallas() {
+    const modal = document.getElementById('guiaTallasModal');
+    const img = document.getElementById('guiaImagen');
+    const titulo = document.getElementById('guiaTitulo');
+    const mensaje = document.getElementById('guiaMensaje');
+    
+    // Determinar el género actual basado en los botones activos
+    const btnMujeres = document.getElementById('btn-mujeres');
+    if (btnMujeres && btnMujeres.classList.contains('active')) {
+        generoActual = 'mujeres';
+    } else {
+        generoActual = 'hombres';
+    }
+    
+    // Por defecto mostrar un mensaje
+    img.style.display = 'none';
+    mensaje.style.display = 'block';
+    mensaje.textContent = 'Haz click en un producto para ver su guía de tallas';
+    titulo.textContent = 'Guía de Tallas';
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function mostrarGuiaTallas(productoNombre) {
+    if (!productoNombre || !guiasTallas[generoActual]) return;
+    
+    const img = document.getElementById('guiaImagen');
+    const titulo = document.getElementById('guiaTitulo');
+    const mensaje = document.getElementById('guiaMensaje');
+    
+    // Buscar coincidencia en el mapa
+    const productoLower = productoNombre.toLowerCase();
+    let rutaImg = null;
+    
+    for (const [key, value] of Object.entries(guiasTallas[generoActual])) {
+        if (productoLower.includes(key)) {
+            rutaImg = value;
+            titulo.textContent = 'Guía de Tallas: ' + productoNombre;
+            break;
+        }
+    }
+    
+    if (rutaImg) {
+        img.src = rutaImg;
+        img.style.display = 'block';
+        mensaje.style.display = 'none';
+    } else {
+        img.style.display = 'none';
+        mensaje.style.display = 'block';
+        mensaje.textContent = 'Guía de tallas no disponible para este producto';
+        titulo.textContent = 'Guía de Tallas';
+    }
+}
+
+function cerrarGuiaTallas(event) {
+    if (event.target.id === 'guiaTallasModal') {
+        const modal = document.getElementById('guiaTallasModal');
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+}
+
+function cerrarGuiaTallasBtn() {
+    const modal = document.getElementById('guiaTallasModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+// Función para ver guía de tallas desde el modal de producto
+function verGuiaTallasProducto() {
+    const titulo = document.getElementById('detailName');
+    if (titulo) {
+        const nombreProducto = titulo.textContent;
+        abrirGuiaTallas();
+        setTimeout(() => {
+            mostrarGuiaTallas(nombreProducto);
+        }, 100);
+    }
+}
