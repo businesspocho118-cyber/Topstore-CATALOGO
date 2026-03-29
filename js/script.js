@@ -769,19 +769,19 @@ document.addEventListener('DOMContentLoaded', function() {
 // Mapa de guías de tallas
 const guiasTallas = {
     "mujeres": {
-        "short-push-up": "guiadetallas/mujeres/short-push-up.png",
-        "short-con-push-up": "guiadetallas/mujeres/short-push-up.png",
-        "short": "guiadetallas/mujeres/short-push-up.png",
-        "conjunto-short": "guiadetallas/mujeres/conjunto-short.png",
-        "conjunto con short": "guiadetallas/mujeres/conjunto-short.png",
-        "chaqueta": "guiadetallas/mujeres/chaquetas.png",
-        "chaquetas": "guiadetallas/mujeres/chaquetas.png",
-        "chaqueta delgada": "guiadetallas/mujeres/chaquetas.png",
-        "enterizo-largo": "guiadetallas/mujeres/enterizo-largo.png",
-        "enterizo": "guiadetallas/mujeres/enterizo-largo.png",
-        "enterizo-corto": "guiadetallas/mujeres/enterizo-corto.png",
-        "conjunto-top": "guiadetallas/mujeres/conjunto-top.png",
-        "conjunto con top": "guiadetallas/mujeres/conjunto-top.png"
+        "short-push-up": "./guiadetallas/mujeres/short-push-up.png",
+        "short-con-push-up": "./guiadetallas/mujeres/short-push-up.png",
+        "short": "./guiadetallas/mujeres/short-push-up.png",
+        "conjunto-short": "./guiadetallas/mujeres/conjunto-short.png",
+        "conjunto con short": "./guiadetallas/mujeres/conjunto-short.png",
+        "chaqueta": "./guiadetallas/mujeres/chaquetas.png",
+        "chaquetas": "./guiadetallas/mujeres/chaquetas.png",
+        "chaqueta delgada": "./guiadetallas/mujeres/chaquetas.png",
+        "enterizo-largo": "./guiadetallas/mujeres/enterizo-largo.png",
+        "enterizo": "./guiadetallas/mujeres/enterizo-largo.png",
+        "enterizo-corto": "./guiadetallas/mujeres/enterizo-corto.png",
+        "conjunto-top": "./guiadetallas/mujeres/conjunto-top.png",
+        "conjunto con top": "./guiadetallas/mujeres/conjunto-top.png"
     },
     "hombres": {}
 };
