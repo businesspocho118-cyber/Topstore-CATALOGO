@@ -796,7 +796,14 @@ function abrirGuiaTallas() {
 }
 
 function mostrarGuiaTallas(productoNombre) {
-    if (!productoNombre || !guiasTallas[generoActual]) return;
+    console.log('mostrarGuiaTallas llamado con:', productoNombre);
+    console.log('Género actual:', generoActual);
+    console.log('Guias disponibles:', guiasTallas[generoActual]);
+    
+    if (!productoNombre || !guiasTallas[generoActual]) {
+        console.log('No hay guías para este género');
+        return;
+    }
     
     const img = document.getElementById('guiaImagen');
     const titulo = document.getElementById('guiaTitulo');
@@ -805,20 +812,34 @@ function mostrarGuiaTallas(productoNombre) {
     // Buscar coincidencia en el mapa
     const productoLower = productoNombre.toLowerCase();
     let rutaImg = null;
+    let claveEncontrada = '';
+    
+    console.log('Buscando coincidencia para:', productoLower);
     
     for (const [key, value] of Object.entries(guiasTallas[generoActual])) {
+        console.log('Comparando con:', key);
         if (productoLower.includes(key)) {
             rutaImg = value;
-            titulo.textContent = 'Guía de Tallas: ' + productoNombre;
+            claveEncontrada = key;
+            console.log('¡Encontrado!', key, '->', value);
             break;
         }
     }
     
     if (rutaImg) {
+        titulo.textContent = 'Guía de Tallas: ' + productoNombre;
         img.src = rutaImg;
+        img.onload = function() {
+            console.log('Imagen cargada correctamente:', rutaImg);
+        };
+        img.onerror = function() {
+            console.log('Error cargando imagen:', rutaImg);
+        };
         img.style.display = 'block';
         mensaje.style.display = 'none';
     } else {
+        titulo.textContent = 'Guía de Tallas';
+        mensaje.textContent = 'Guía de tallas no disponible para: ' + productoNombre;
         img.style.display = 'none';
         mensaje.style.display = 'block';
         mensaje.textContent = 'Guía de tallas no disponible para este producto';
