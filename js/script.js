@@ -349,25 +349,9 @@ function openProductQuickView(productId) {
     if (descEl) descEl.textContent = description;
     if (priceEl) priceEl.textContent = price;
     
-    // Populate colors
+    // Populate colors - DESHABILITADO por solicitud del usuario
     if (colorsEl) {
         colorsEl.innerHTML = '';
-        if (colors) {
-            currentProductColors = colors.split(',').map(function(c) { return c.trim(); });
-            currentProductColors.forEach(function(color) {
-                var colorInfo = getColorHex(color);
-                var colorSwatch = document.createElement('div');
-                colorSwatch.className = 'color-swatch';
-                colorSwatch.setAttribute('data-color', color);
-                colorSwatch.style.backgroundColor = colorInfo.hex;
-                if (colorInfo.needsBorder) {
-                    colorSwatch.style.border = '1px solid #ddd';
-                }
-                colorSwatch.title = color;
-                colorSwatch.onclick = function() { selectColor(color); };
-                colorsEl.appendChild(colorSwatch);
-            });
-        }
     }
     
     // Update WhatsApp link with product name
@@ -512,25 +496,9 @@ function openProductDetail(productId) {
     if (descEl) descEl.textContent = description;
     if (priceEl) priceEl.textContent = price;
     
-    // Populate colors
+    // Populate colors - DESHABILITADO por solicitud del usuario
     if (colorsEl) {
         colorsEl.innerHTML = '';
-        if (colors) {
-            currentProductColors = colors.split(',').map(function(c) { return c.trim(); });
-            currentProductColors.forEach(function(color) {
-                var colorInfo = getColorHex(color);
-                var colorSwatch = document.createElement('div');
-                colorSwatch.className = 'color-swatch';
-                colorSwatch.setAttribute('data-color', color);
-                colorSwatch.style.backgroundColor = colorInfo.hex;
-                if (colorInfo.needsBorder) {
-                    colorSwatch.style.border = '1px solid #ddd';
-                }
-                colorSwatch.title = color;
-                colorSwatch.onclick = function() { selectColor(color); };
-                colorsEl.appendChild(colorSwatch);
-            });
-        }
     }
     
     // Update WhatsApp link with product name
