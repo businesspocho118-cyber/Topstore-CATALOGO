@@ -6,8 +6,7 @@
     "enabled": true
   },
   "assets": {
-    "directory": ".",
-    "ignore": [".git", "node_modules", ".wrangler"]
+    "directory": "."
   },
   "compatibility_flags": [
     "nodejs_compat"
