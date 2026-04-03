@@ -1,3 +1,5 @@
-# Exclude .git from tracking (for Cloudflare deploy)
 .git
 .git/
+.wrangler
+.wrangler.json
+.wrangler.jsonc
