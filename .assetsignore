@@ -1,2 +1,12 @@
 _worker.js
 _wrangler.toml
+.git
+.gitignore
+.wrangler
+.wrangler.json
+.wrangler.jsonc
+node_modules
+*.md
+README*
+LICENSE
+.cloudflareignore

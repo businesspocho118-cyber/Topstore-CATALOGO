@@ -1,0 +1,8 @@
+.git
+.gitignore
+.wrangler
+node_modules
+*.md
+README*
+LICENSE
+.git/
