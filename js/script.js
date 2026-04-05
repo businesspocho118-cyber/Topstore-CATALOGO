@@ -708,3 +708,96 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 });
+
+// ========================================
+// STOCK CHECK - SUPABASE INTEGRATION
+// ========================================
+(function() {
+    // Supabase configuration
+    const SUPABASE_URL = 'https://mwilpokulvssoomdytyk.supabase.co';
+    const SUPABASE_KEY = 'SUPABASE_ANON_KEY_PLACEHOLDER'; // TODO: set from env
+    
+    // Cache stock data for 5 minutes
+    let stockCache = null;
+    let stockCacheTime = 0;
+    const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
+    async function getStockFromSupabase() {
+        // Return cached data if still valid
+        if (stockCache && (Date.now() - stockCacheTime) < CACHE_DURATION) {
+            return stockCache;
+        }
+
+        try {
+            const response = await fetch(`${SUPABASE_URL}/rest/v1/productos?select=product_id,stock`, {
+                headers: {
+                    'apikey': SUPABASE_KEY,
+                    'Authorization': `Bearer ${SUPABASE_KEY}`,
+                    'Content-Type': 'application/json',
+                    'Prefer': 'count=exact'
+                }
+            });
+
+            if (!response.ok) {
+                console.warn('Stock API error:', response.status);
+                return {};
+            }
+
+            const data = await response.json();
+            
+            // Build lookup map: product_id -> stock
+            const stockMap = {};
+            data.forEach(item => {
+                stockMap[item.product_id] = item.stock;
+            });
+
+            // Cache the result
+            stockCache = stockMap;
+            stockCacheTime = Date.now();
+
+            return stockMap;
+        } catch (error) {
+            console.warn('Failed to fetch stock:', error);
+            return {};
+        }
+    }
+
+    function applyStockBanners(stockMap) {
+        const cards = document.querySelectorAll('.product-card');
+        
+        cards.forEach(card => {
+            const productId = card.getAttribute('data-product-id');
+            if (!productId) return;
+
+            const stock = stockMap[productId];
+            
+            // If stock is 0 or undefined (product not in inventory), skip
+            if (stock === 0) {
+                // Check if banner already exists
+                const existing = card.querySelector('.stock-banner');
+                if (existing) return;
+
+                const banner = document.createElement('div');
+                banner.className = 'stock-banner out-of-stock';
+                banner.textContent = 'SIN STOCK';
+                
+                // Insert at the beginning of the card
+                card.insertBefore(banner, card.firstChild);
+            }
+        });
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        getStockFromSupabase().then(stockMap => {
+            applyStockBanners(stockMap);
+        });
+    });
+
+    // Refresh stock every 5 minutes if page stays open
+    setInterval(function() {
+        getStockFromSupabase().then(stockMap => {
+            applyStockBanners(stockMap);
+        });
+    }, CACHE_DURATION);
+})();
