@@ -715,7 +715,7 @@ document.addEventListener('DOMContentLoaded', function() {
 (function() {
     // Supabase configuration
     const SUPABASE_URL = 'https://mwilpokulvssoomdytyk.supabase.co';
-    const SUPABASE_KEY = 'SUPABASE_ANON_KEY_PLACEHOLDER'; // TODO: set from env
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im13aWxwb2t1bHZzc29vbWR5dHlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5MDkyNTcsImV4cCI6MjA5MDQ4NTI1N30.2Iz-OdRVdy-QxUctePM1oqdPv3yAgApO97zsfJdAcEQ';
     
     // Cache stock data for 5 minutes
     let stockCache = null;
