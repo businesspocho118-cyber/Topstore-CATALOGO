@@ -2478,67 +2478,57 @@ body {
     justify-content: center;
     z-index: 10;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.preview-card:hover .stock-banner {
+    opacity: 1;
 }
 
 .stock-banner.out-of-stock {
-    background: rgba(180, 30, 30, 0.85);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 1;
+}
+
+.stock-banner.out-of-stock span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #ffffff;
+    padding: 8px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
 }
 
-.stock-banner.out-of-stock::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 60px;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    border-radius: 4px;
-}
-
-.stock-banner.out-of-stock::after {
-    content: 'SIN STOCK';
-    position: relative;
-    z-index: 2;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    color: #ffffff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
 /* Dim the product image when out of stock */
 .preview-card.out-of-stock .image-wrapper img {
-    filter: grayscale(50%) brightness(0.6);
+    filter: grayscale(30%) brightness(0.8);
     transition: filter 0.4s ease;
 }
 
 .preview-card.out-of-stock:hover .image-wrapper img {
-    filter: grayscale(30%) brightness(0.7);
+    filter: grayscale(10%) brightness(0.85);
 }
 
 /* Mobile responsive */
 @media (max-width: 768px) {
-    .stock-banner.out-of-stock::before {
-        height: 50px;
-        width: 75%;
-    }
-    .stock-banner.out-of-stock::after {
-        font-size: 0.9rem;
-        letter-spacing: 4px;
+    .stock-banner.out-of-stock span {
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+        padding: 6px 18px;
     }
 }
 
 @media (max-width: 480px) {
-    .stock-banner.out-of-stock::before {
-        height: 42px;
-        width: 70%;
-    }
-    .stock-banner.out-of-stock::after {
-        font-size: 0.75rem;
-        letter-spacing: 3px;
+    .stock-banner.out-of-stock span {
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+        padding: 5px 14px;
     }
 }
