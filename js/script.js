@@ -777,9 +777,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 const existing = card.querySelector('.stock-banner');
                 if (existing) return;
 
+                // Add class to card for image dimming effect
+                card.classList.add('out-of-stock');
+
                 const banner = document.createElement('div');
                 banner.className = 'stock-banner out-of-stock';
-                banner.textContent = 'SIN STOCK';
+                const span = document.createElement('span');
+                span.textContent = 'SIN STOCK';
+                banner.appendChild(span);
                 
                 // Insert at the beginning of the card
                 card.insertBefore(banner, card.firstChild);
