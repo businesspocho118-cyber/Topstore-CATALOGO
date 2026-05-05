@@ -574,11 +574,14 @@ main {
    ============================================ */
 .preview-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 35px;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-items: center;
 }
 
-/* Preview Card */
+/* Ensure all preview-cards are consistently sized */
 .preview-card {
     background: var(--bg-card);
     border-radius: var(--border-radius-lg);
@@ -589,6 +592,8 @@ main {
     position: relative;
     border: 1px solid var(--border-subtle);
     cursor: pointer;
+    width: 100%;
+    max-width: 350px;
 }
 
 /* Image wrapper with aspect ratio */
@@ -2128,21 +2133,14 @@ button:focus-visible,
     text-align: left !important;
 }
 
-/* Fix para Conjunto con Leggins Bota Campana - forzar tamaño igual que los demás */
+/* Fix para Conjunto con Leggins Bota Campana only - forzar tamaño igual que los demás */
 .preview-card[data-product-id="conjunto-leggins-bota-campana"] .image-wrapper {
-    aspect-ratio: 3/4 !important;
     height: 400px !important;
     max-height: 400px !important;
-    overflow: hidden !important;
 }
 
 .preview-card[data-product-id="conjunto-leggins-bota-campana"] .image-wrapper img {
-    object-fit: cover !important;
-    width: 100% !important;
-    height: 100% !important;
     max-height: 400px !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
 }
 .preview-card::before, .preview-card::after { display: none !important; }
 .preview-card:hover {
