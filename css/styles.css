@@ -2127,6 +2127,11 @@ button:focus-visible,
     background: transparent !important;
     text-align: left !important;
 }
+
+/* Fix para Conjunto con Leggins Bota Campana - forzar tamaño igual */
+.product-card[data-product-id="conjunto-leggins-bota-campana"] .image-wrapper img {
+    object-fit: contain !important;
+}
 .preview-card::before, .preview-card::after { display: none !important; }
 .preview-card:hover {
     transform: none !important;
