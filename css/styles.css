@@ -2129,8 +2129,17 @@ button:focus-visible,
 }
 
 /* Fix para Conjunto con Leggins Bota Campana - forzar tamaño igual */
-.product-card[data-product-id="conjunto-leggins-bota-campana"] .image-wrapper img {
+.preview-card[data-product-id="conjunto-leggins-bota-campana"] .image-wrapper img {
     object-fit: contain !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+
+/* Forzar aspect ratio igual que los demás productos */
+.preview-card[data-product-id="conjunto-leggins-bota-campana"] .image-wrapper {
+    aspect-ratio: 3/4 !important;
 }
 .preview-card::before, .preview-card::after { display: none !important; }
 .preview-card:hover {
