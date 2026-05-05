@@ -542,7 +542,7 @@ main {
 /* Subsection Title */
 .subsection-title {
     font-family: var(--font-heading);
-    text-align: left;
+    text-align: center;
     margin: 70px 0 40px;
     padding-bottom: 20px;
     font-size: 1.6rem;
@@ -551,6 +551,7 @@ main {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 15px;
 }
 
