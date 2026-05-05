@@ -542,26 +542,32 @@ main {
 /* Subsection Title */
 .subsection-title {
     font-family: var(--font-heading);
-    text-align: left;
+    text-align: center;
     margin: 70px 0 40px;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
     font-size: 1.6rem;
     color: var(--gold-primary);
-    border-bottom: 2px solid var(--border-subtle);
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 15px;
 }
 
-.subsection-title::before {
+/* Linea debajo del título - uniforme */
+.subsection-title::after {
     content: '';
     position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98%;
     height: 2px;
-    background: var(--gold-gradient);
+    background: var(--gold-primary);
+}
+
+.subsection-title::before {
+    display: none;
 }
 
 .subsection-title .icon {
@@ -574,11 +580,14 @@ main {
    ============================================ */
 .preview-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 35px;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-items: center;
 }
 
-/* Preview Card */
+/* Ensure all preview-cards are consistently sized */
 .preview-card {
     background: var(--bg-card);
     border-radius: var(--border-radius-lg);
@@ -589,6 +598,8 @@ main {
     position: relative;
     border: 1px solid var(--border-subtle);
     cursor: pointer;
+    width: 100%;
+    max-width: 350px;
 }
 
 /* Image wrapper with aspect ratio */
@@ -2114,9 +2125,11 @@ button:focus-visible,
     font-size: 1.2rem;
     letter-spacing: 4px;
     text-transform: uppercase;
-    border-bottom: 1px solid #eee !important;
     padding-bottom: 10px;
+    text-align: center;
+    justify-content: center;
 }
+
 .subsection-title::before { display: none !important; }
 
 /* Product Cards */
@@ -2126,6 +2139,16 @@ button:focus-visible,
     box-shadow: none !important;
     background: transparent !important;
     text-align: left !important;
+}
+
+/* Fix para Conjunto con Leggins Bota Campana only - forzar tamaño igual que los demás */
+.preview-card[data-product-id="conjunto-leggins-bota-campana"] .image-wrapper {
+    height: 400px !important;
+    max-height: 400px !important;
+}
+
+.preview-card[data-product-id="conjunto-leggins-bota-campana"] .image-wrapper img {
+    max-height: 400px !important;
 }
 .preview-card::before, .preview-card::after { display: none !important; }
 .preview-card:hover {
@@ -2311,7 +2334,6 @@ body {
 }
 .subsection-title {
     color: var(--text-primary) !important;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
 }
 
 /* Product Cards */
