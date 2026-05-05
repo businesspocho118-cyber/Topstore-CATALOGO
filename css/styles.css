@@ -544,7 +544,7 @@ main {
     font-family: var(--font-heading);
     text-align: center;
     margin: 70px 0 40px;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
     font-size: 1.6rem;
     color: var(--gold-primary);
     position: relative;
@@ -554,15 +554,20 @@ main {
     gap: 15px;
 }
 
-.subsection-title::before {
+/* Linea debajo del título - uniforme */
+.subsection-title::after {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
+    width: 60px;
     height: 2px;
-    background: var(--gold-gradient);
+    background: var(--gold-primary);
+}
+
+.subsection-title::before {
+    display: none;
 }
 
 .subsection-title .icon {
