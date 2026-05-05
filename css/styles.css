@@ -547,7 +547,6 @@ main {
     padding-bottom: 20px;
     font-size: 1.6rem;
     color: var(--gold-primary);
-    border-bottom: 2px solid var(--border-subtle);
     position: relative;
     display: flex;
     align-items: center;
@@ -2121,7 +2120,6 @@ button:focus-visible,
     font-size: 1.2rem;
     letter-spacing: 4px;
     text-transform: uppercase;
-    border-bottom: 1px solid #eee !important;
     padding-bottom: 10px;
     text-align: center;
     justify-content: center;
@@ -2331,7 +2329,6 @@ body {
 }
 .subsection-title {
     color: var(--text-primary) !important;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
 }
 
 /* Product Cards */
