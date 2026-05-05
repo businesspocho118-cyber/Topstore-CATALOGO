@@ -2123,7 +2123,10 @@ button:focus-visible,
     text-transform: uppercase;
     border-bottom: 1px solid #eee !important;
     padding-bottom: 10px;
+    text-align: center;
+    justify-content: center;
 }
+
 .subsection-title::before { display: none !important; }
 
 /* Product Cards */
