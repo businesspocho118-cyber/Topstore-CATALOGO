@@ -561,7 +561,7 @@ main {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
+    width: 150px;
     height: 2px;
     background: var(--gold-primary);
 }
